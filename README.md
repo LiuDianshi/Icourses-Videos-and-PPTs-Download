@@ -1,6 +1,53 @@
 # Icourses-Videos-And-PDF-Download
 ## 爱课程MP4格式视频以及PDF课件下载
 
+## V2.0（2018.4.20）
+
+ChangeLog:
+
+0.程序完全重写
+
+1.因为爱课程限制，下载速度特别慢，故把原程序的下载功能取消，改为给出下载链接，由用户选择下载工具进行下载
+
+2.新增改名功能
+
+演示如下：
+
+#### 1.安装Python3.6
+
+安装方式见`V1.0`运行教程
+
+#### 2.在浏览器中登录爱课程
+
+安装方式见`V1.0`运行教程
+
+#### 3.下载并运行`V2.0`程序源代码
+
+按照`V1.0`运行教程的说明，安装第三方库，下载源代码，解压，进入`SRC`，`v2.0`，即可看到`Icourse.py`文件，在空白处按住`Shift`单击右键，选择`在此处打开Powershell窗口`，输入`python Icourse.py`即可运行。
+
+效果如图：
+
+运行程序，输入保存地址、课程地址
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfkz2vz7j30xz056mxo.jpg)
+
+这是在保存地址内会出现`下载链接.txt`文件，里面为该课程所有视频、课件的下载地址，可将链接复制后用第三方下载工具如迅雷下载
+
+例如将该课程所有的课件地址复制，打开迅雷即可下载
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfockf7lj30sd0kkjvp.jpg)
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfok1vbzj30yc0nbqaw.jpg)
+
+下载后的文件名字是乱的
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfq1dszij31540mlgpk.jpg)
+
+可以使用程序自带的改名功能，只需在刚才的窗口中输入`Y`或者`y`，按下回车键即可
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfqonq43j314u0m1wia.jpg)
+
+
 ## V1.0
 ### 使用方法：
 
