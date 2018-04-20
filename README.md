@@ -1,6 +1,7 @@
 # Icourses-Videos-And-PDF-Download
 ## 爱课程MP4格式视频以及PDF课件下载
 
+## V1.0
 ### 使用方法：
 
 #### 1.安装Python3.6
