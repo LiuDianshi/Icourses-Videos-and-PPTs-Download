@@ -38,7 +38,7 @@ ChangeLog:
 
 #### 3.下载并运行`V2.0`程序源代码
 
-按照`V1.0`运行教程的说明，安装第三方库，下载源代码，解压，进入`SRC`，`v2.0`，即可看到`Icourse.py`文件，在空白处按住`Shift`单击右键，选择`在此处打开Powershell窗口`，输入`python Icourse.py`即可运行。
+按照`V1.0`运行教程的说明，安装第三方库，下载源代码，解压，进入`src`，即可看到`Icourse.py`文件，在空白处按住`Shift`单击右键，选择`在此处打开Powershell窗口`，输入`python Icourse.py`即可运行。
 
 效果如图：
 
