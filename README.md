@@ -1,6 +1,21 @@
 # Icourses-Videos-And-PDF-Download
 ## 爱课程MP4格式视频以及PDF课件下载
 
+## V2.1(2018.6.7)
+
+ChangeLog:
+
+近日爱课程更改了前端逻辑，使源程序失效，具体表现为`下载链接.txt`文件为空，2.1版本已修复
+
+其运行方法与`V2.0`基本一致，请参考`V2.0`的运行方法。
+
+已知Bug：某些课程的文件会出现无法改名的bug，待修复。
+
+
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fs2nzxsqmaj30y80prgs1.jpg)
+
+
 ## V2.0（2018.4.20）
 
 ChangeLog:
