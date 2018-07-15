@@ -47,8 +47,8 @@ def getRess(html):
     soup = BeautifulSoup(html.text, 'lxml')
     datasid = []
     for link in soup.find_all(
-            'a', class_='chapter-body-content-text section-event-t no-load'):
-        sec_id = link.get('data-secid')
+            'li', class_='chapter-bind-click panel noContent'):
+        sec_id = link.get('data-id')
         datasid.append(sec_id)
     return datasid
 
