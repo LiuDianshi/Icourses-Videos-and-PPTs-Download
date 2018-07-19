@@ -31,7 +31,9 @@ def get_html(id, loc):
     url = 'http://www.icourses.cn/web/sword/portal/shareChapter?cid=' + str(id)
     html = requests.get(url, headers=header)
     html.encoding = html.apparent_encoding
-    datasid = getRess(html)
+    datasid = getRess1(html)
+    if not bool(datasid):
+        datasid = getRess2(html)
     mp4_list, pdf_list = get_download_link(datasid, id)
     write_txt(mp4_list, pdf_list, loc)
     print('所有的下载链接均已写入保存地址内名为‘下载链接’的文本文件内！')
@@ -43,12 +45,22 @@ def get_html(id, loc):
         return
 
 
-def getRess(html):
+def getRess1(html):
     soup = BeautifulSoup(html.text, 'lxml')
     datasid = []
     for link in soup.find_all(
             'li', class_='chapter-bind-click panel noContent'):
         sec_id = link.get('data-id')
+        datasid.append(sec_id)
+    return datasid
+
+
+def getRess2(html):
+    soup = BeautifulSoup(html.text, 'lxml')
+    datasid = []
+    for link in soup.find_all(
+            'a', class_='chapter-body-content-text section-event-t no-load'):
+        sec_id = link.get('data-secid')
         datasid.append(sec_id)
     return datasid
 
