@@ -1,7 +1,7 @@
 # Icourses-Videos-And-PDF-Download
 ## 爱课程MP4格式视频以及PDF课件下载
 
-## V2.2(2018.7.16)
+## V2.3(2018.7.27)
 
 ChangeLog:
 
