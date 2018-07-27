@@ -6,6 +6,15 @@ import lxml
 import os
 
 
+def get_course_name(id):
+    url = 'http://www.icourses.cn/sCourse/course_' + str(id) + '.html'
+    result = requests.get(url)
+    result.encoding = result.apparent_encoding
+    soup = BeautifulSoup(result.text, 'lxml')
+    name = soup.find('p', class_='pull-left')
+    print('正在解析 ' + name.text + ' 课程资源')
+
+
 def get_html(id, loc):
     header = {
         'Accept':
@@ -31,10 +40,15 @@ def get_html(id, loc):
     url = 'http://www.icourses.cn/web/sword/portal/shareChapter?cid=' + str(id)
     html = requests.get(url, headers=header)
     html.encoding = html.apparent_encoding
-    datasid = getRess1(html)
-    if not bool(datasid):
-        datasid = getRess2(html)
-    mp4_list, pdf_list = get_download_link(datasid, id)
+    datasid1 = getRess1(html)
+    datasid2 = getRess2(html)
+    for i in range(len(datasid1)):
+        if i not in datasid2:
+            datasid2.append(i)
+    mp4_list, pdf_list = get_download_link(datasid2, id)
+    mp4_num = len(mp4_list)
+    pdf_num = len(pdf_list)
+    print('共抓取到：视频' + str(mp4_num) + '条，pdf课件' + str(pdf_num) + '个。')
     write_txt(mp4_list, pdf_list, loc)
     print('所有的下载链接均已写入保存地址内名为‘下载链接’的文本文件内！')
     choice = input('是否改名？(Y/N)')
@@ -150,4 +164,5 @@ if __name__ == '__main__':
     link = input('请输入课程链接:')
     cid = get_id(link)
     if cid:
+        get_course_name(cid)
         get_html(cid, loc)
