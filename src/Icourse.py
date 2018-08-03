@@ -12,7 +12,13 @@ def get_course_name(id):
     result.encoding = result.apparent_encoding
     soup = BeautifulSoup(result.text, 'lxml')
     name = soup.find('p', class_='pull-left')
-    print('正在解析 ' + name.text + ' 课程资源')
+    try:
+    	print('正在解析 ' + name.text + ' 课程资源')
+    except:
+    	print('未找到该课程的信息，请确认输入的链接是否正确')
+    	exit()
+    finally:
+    	pass
 
 
 def get_html(id, loc):
