@@ -166,8 +166,8 @@ def chang_name(mp4_list, pdf_list, loc):
 
 
 if __name__ == '__main__':
-    loc = input('请输入保存地址:')
-    link = input('请输入课程链接:')
+    loc = input('请输入保存地址(如 D:\爱课程下载):')
+    link = input('请输入课程链接(如 http://www.icourses.cn/sCourse/course_4860.html):')
     cid = get_id(link)
     if cid:
         get_course_name(cid)
