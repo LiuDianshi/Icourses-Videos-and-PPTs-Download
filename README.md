@@ -117,7 +117,7 @@ ChangeLog:
 ```powershell
 pip install requests
 pip install bs4
-pip installer lxml
+pip install lxml
 ```
 
 ###### 2.下载源代码并运行
