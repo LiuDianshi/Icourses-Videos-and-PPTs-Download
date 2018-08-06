@@ -1,3 +1,4 @@
+#coding=utf-8
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -13,12 +14,12 @@ def get_course_name(id):
     soup = BeautifulSoup(result.text, 'lxml')
     name = soup.find('p', class_='pull-left')
     try:
-    	print('正在解析 ' + name.text + ' 课程资源')
+        print('正在解析 ' + name.text + ' 课程资源')
     except:
-    	print('未找到该课程的信息，请确认输入的链接是否正确')
-    	exit()
+        print('未找到该课程的信息，请确认输入的链接是否正确')
+        exit()
     finally:
-    	pass
+        pass
 
 
 def get_html(id, loc):
@@ -44,22 +45,29 @@ def get_html(id, loc):
     }
 
     url = 'http://www.icourses.cn/web/sword/portal/shareChapter?cid=' + str(id)
+    source_url = 'http://www.icourses.cn/web/sword/portal/sharerSource?cid=' + str(
+        id)
     html = requests.get(url, headers=header)
     html.encoding = html.apparent_encoding
     datasid1 = getRess1(html)
     datasid2 = getRess2(html)
-    for i in range(len(datasid1)):
-        if i not in datasid2:
-            datasid2.append(i)
-    mp4_list, pdf_list = get_download_link(datasid2, id)
+    for i in range(len(datasid2)):
+        if datasid2[i] not in datasid1:
+            datasid1.append(datasid2[i])
+    mp4_list, pdf_list = get_download_link(datasid1, id)
     mp4_num = len(mp4_list)
     pdf_num = len(pdf_list)
-    print('共抓取到：视频' + str(mp4_num) + '条，pdf课件' + str(pdf_num) + '个。')
-    write_txt(mp4_list, pdf_list, loc)
+    source_html = requests.get(source_url, headers=header)
+    source_html.encoding = source_html.apparent_encoding
+    source_list = get_source_link(source_html)
+    source_num = len(source_list)
+    print('共抓取到：视频' + str(mp4_num) + '条，pdf课件' + str(pdf_num) + '个，以及其他资源' +
+          str(source_num) + '条。')
+    write_txt(mp4_list, pdf_list, source_list, loc)
     print('所有的下载链接均已写入保存地址内名为‘下载链接’的文本文件内！')
     choice = input('是否改名？(Y/N)')
     if choice in ['Y', 'y']:
-        chang_name(mp4_list, pdf_list, loc)
+        chang_name(mp4_list, pdf_list, source_list, loc)
     else:
         print('程序运行结束')
         return
@@ -85,7 +93,16 @@ def getRess2(html):
     return datasid
 
 
-def write_txt(mp4_list, pdf_list, loc):
+def get_source_link(html):
+    source_list = {}
+    soup = BeautifulSoup(html.text, 'lxml')
+    for link in soup.find_all(
+            'a', class_='courseshareresources-content clearfix'):
+        source_list[link.get('data-url')] = '其他资源-' + link.get('data-title')
+    return source_list
+
+
+def write_txt(mp4_list, pdf_list, source_list, loc):
     with open(loc + '\\下载链接.txt', 'w') as f:
         f.write('以下是视频下载链接：')
         f.write('\n')
@@ -97,6 +114,13 @@ def write_txt(mp4_list, pdf_list, loc):
         f.write('以下是课件下载链接：')
         f.write('\n')
         for key in pdf_list:
+            f.write(key)
+            f.write('\n')
+        f.write('\n')
+        f.write('\n')
+        f.write('以下是其他资源下载链接：')
+        f.write('\n')
+        for key in source_list:
             f.write(key)
             f.write('\n')
         f.close()
@@ -137,13 +161,15 @@ def get_download_link(datasid, id):
             loc = json['model']['listRes']
             for i in loc:
                 if i['mediaType'] == 'mp4':
-                    mp4_list[i['fullResUrl']] = i['title']
+                    mp4_list[i[
+                        'fullResUrl']] = i['resSortDesc'] + '-' + i['title']
                 elif i['mediaType'] in ['ppt', 'pdf']:
-                    pdf_list[i['fullResUrl']] = i['title']
+                    pdf_list[i[
+                        'fullResUrl']] = i['resSortDesc'] + '-' + i['title']
     return mp4_list, pdf_list
 
 
-def chang_name(mp4_list, pdf_list, loc):
+def chang_name(mp4_list, pdf_list, source_list, loc):
     loc = loc.replace('\\', r'\\') + r'\\'
     list = os.listdir(loc)
     name_dict = {}
@@ -151,6 +177,8 @@ def chang_name(mp4_list, pdf_list, loc):
         name_dict[(key.split('/')[-1])] = mp4_list[key]
     for key in pdf_list:
         name_dict[(key.split('/')[-1])] = pdf_list[key]
+    for key in source_list:
+        name_dict[(key.split('/')[-1])] = source_list[key]
     for item in list:
         if item in name_dict:
             old_name = loc + item
@@ -158,7 +186,10 @@ def chang_name(mp4_list, pdf_list, loc):
             try:
                 os.rename(old_name, new_name)
             except:
-                continue
+                tailor = new_name.split('.')[-1]
+                new_name = new_name.split(tailor)[0] + old_name.split(
+                    '.')[-2][-5:] + '.' + tailor
+                os.rename(old_name, new_name)
             finally:
                 pass
         else:
