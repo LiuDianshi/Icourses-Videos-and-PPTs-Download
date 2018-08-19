@@ -1,6 +1,20 @@
 # Icourses-Videos-And-PDF-Download
 ## 爱课程MP4格式视频以及PDF课件下载
 
+
+## V2.5(2018.8.6)
+
+ChangeLog:
+
+彻底修复了抓取不全的bug(我用人格担保 /doge)，修复了部分文件不能改名的bug，新增下载课程列表里的“其他资源”的功能(实验性，可能不稳定)，如下图所示，
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fu08400om4j31hc0ou0zi.jpg)
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fu085r9irdj311g07h40f.jpg)
+
+下一个版本会把改名功能单独独立出来。
+
+
 ## V2.3(2018.7.27)
 
 ChangeLog:
