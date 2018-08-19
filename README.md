@@ -1,6 +1,14 @@
 # Icourses-Videos-And-PDF-Download
 ## 爱课程MP4格式视频以及PDF课件下载
 
+## V2.6(2018.8.19)
+
+ChangeLog:
+
+增加爱课程页面的“习题作业”和“测试试卷”资源的下载（如下图），目前以支持爱课程所有课程所有资源的下载。
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fuf95lq051j31340nxq6j.jpg)
+
 
 ## V2.5(2018.8.6)
 
