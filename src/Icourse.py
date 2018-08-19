@@ -47,6 +47,10 @@ def get_html(id, loc):
     url = 'http://www.icourses.cn/web/sword/portal/shareChapter?cid=' + str(id)
     source_url = 'http://www.icourses.cn/web/sword/portal/sharerSource?cid=' + str(
         id)
+    homework_url = 'http://www.icourses.cn/web/sword/portal/assignments?cid=' + str(
+        id)
+    exampaper_url = 'http://www.icourses.cn/web/sword/portal/testPaper?cid=' + str(
+        id)
     html = requests.get(url, headers=header)
     html.encoding = html.apparent_encoding
     datasid1 = getRess1(html)
@@ -57,17 +61,29 @@ def get_html(id, loc):
     mp4_list, pdf_list = get_download_link(datasid1, id)
     mp4_num = len(mp4_list)
     pdf_num = len(pdf_list)
+
     source_html = requests.get(source_url, headers=header)
     source_html.encoding = source_html.apparent_encoding
     source_list = get_source_link(source_html)
     source_num = len(source_list)
-    print('共抓取到：视频' + str(mp4_num) + '条，pdf课件' + str(pdf_num) + '个，以及其他资源' +
+
+    homework_html = requests.get(homework_url,headers = header)
+    homework_html.encoding = homework_html.apparent_encoding
+    homework_list = get_homework_and_exampaper_link(homework_html,'习题作业')
+    homework_num = len(homework_list)
+
+    exampaper_html = requests.get(exampaper_url,headers = header)    
+    exampaper_html.encoding = exampaper_html.apparent_encoding    
+    exampaper_list = get_homework_and_exampaper_link(exampaper_html,'测试试卷')    
+    exampaper_num = len(exampaper_list)
+
+    print('共抓取到：视频' + str(mp4_num) + '条，pdf课件' + str(pdf_num) + '个，习题作业'+ str(homework_num)+'个，测试试卷'+str(exampaper_num)+'个，以及其他资源' +
           str(source_num) + '条。')
-    write_txt(mp4_list, pdf_list, source_list, loc)
+    write_txt(mp4_list, pdf_list, source_list,homework_list,exampaper_list,loc)
     print('所有的下载链接均已写入保存地址内名为‘下载链接’的文本文件内！')
     choice = input('是否改名？(Y/N)')
     if choice in ['Y', 'y']:
-        chang_name(mp4_list, pdf_list, source_list, loc)
+        chang_name(mp4_list, pdf_list, source_list,homework_list,exampaper_list, loc)
     else:
         print('程序运行结束')
         return
@@ -102,7 +118,15 @@ def get_source_link(html):
     return source_list
 
 
-def write_txt(mp4_list, pdf_list, source_list, loc):
+def get_homework_and_exampaper_link(html, name):
+    source_list = {}
+    soup = BeautifulSoup(html.text, 'lxml')
+    for link in soup.find_all('a', {'data-class':'media'}):
+        source_list[link.get('data-url')] = str(name) + link.get('data-title')
+    return source_list
+
+
+def write_txt(mp4_list, pdf_list, source_list,homework_list,exampaper_list,loc):
     with open(loc + '\\下载链接.txt', 'w') as f:
         f.write('以下是视频下载链接：')
         f.write('\n')
@@ -121,6 +145,20 @@ def write_txt(mp4_list, pdf_list, source_list, loc):
         f.write('以下是其他资源下载链接：')
         f.write('\n')
         for key in source_list:
+            f.write(key)
+            f.write('\n')
+        f.write('\n')
+        f.write('\n')
+        f.write('以下是习题作业下载链接：')
+        f.write('\n')
+        for key in homework_list:
+            f.write(key)
+            f.write('\n')
+        f.write('\n')
+        f.write('\n')
+        f.write('以下是测试试卷下载链接：')
+        f.write('\n')
+        for key in exampaper_list:
             f.write(key)
             f.write('\n')
         f.close()
@@ -169,7 +207,7 @@ def get_download_link(datasid, id):
     return mp4_list, pdf_list
 
 
-def chang_name(mp4_list, pdf_list, source_list, loc):
+def chang_name(mp4_list, pdf_list, source_list, homework_list,exampaper_list,loc):
     loc = loc.replace('\\', r'\\') + r'\\'
     list = os.listdir(loc)
     name_dict = {}
@@ -179,6 +217,10 @@ def chang_name(mp4_list, pdf_list, source_list, loc):
         name_dict[(key.split('/')[-1])] = pdf_list[key]
     for key in source_list:
         name_dict[(key.split('/')[-1])] = source_list[key]
+    for key in homework_list:
+        name_dict[(key.split('/')[-1])] = homework_list[key]
+    for key in exampaper_list:
+        name_dict[(key.split('/')[-1])] = exampaper_list[key]
     for item in list:
         if item in name_dict:
             old_name = loc + item
