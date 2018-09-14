@@ -2,9 +2,13 @@
 ## 爱课程MP4格式视频以及PDF课件下载
 
 
-## V2.5(2018.8.6)
+## 更新日志：
 
-ChangeLog:
+### V2.6(2018.9.14)
+
+修复了某些课程无法改名的bug
+
+### V2.5(2018.8.6)
 
 彻底修复了抓取不全的bug(我用人格担保 /doge)，修复了部分文件不能改名的bug，新增下载课程列表里的“其他资源”的功能(实验性，可能不稳定)，如下图所示，
 
@@ -14,22 +18,15 @@ ChangeLog:
 
 下一个版本会把改名功能单独独立出来。
 
-
-## V2.3(2018.7.27)
-
-ChangeLog:
+### V2.3(2018.7.27)
 
 修复了抓取不全的bug,增加提示信息。
 
-## V2.2(2018.7.16)
-
-ChangeLog:
+### V2.2(2018.7.16)
 
 经反馈，已知的从爱课程网页获取资源的解析方式有两种，目前的版本已经包含了这两种解析方式，但不能确认是否存在其他的解析方式，如果在使用过程中发现解析失败，请将课程的链接以各种方式反馈给我。
 
-## V2.1(2018.6.7)
-
-ChangeLog:
+### V2.1(2018.6.7)
 
 近日爱课程更改了前端逻辑，使源程序失效，具体表现为`下载链接.txt`文件为空，2.1版本已修复
 
@@ -42,9 +39,7 @@ ChangeLog:
 ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fs2nzxsqmaj30y80prgs1.jpg)
 
 
-## V2.0（2018.4.20）
-
-ChangeLog:
+### V2.0（2018.4.20）
 
 0.程序完全重写
 
@@ -52,23 +47,64 @@ ChangeLog:
 
 2.新增改名功能
 
-演示如下：
+## 使用教程：
 
-#### 1.安装Python3.6
+### 简略无废话版：
 
-安装方式见`V1.0`运行教程
+如下：
 
-#### 2.在浏览器中登录爱课程
+>1. 安装Python(建议Python3.5以上)，在安装时选准从选择`将Python添加至环境变量`
+>2. 下载或clone
+>3. 安装`bs4`,`requests`,`lxml`
+>4. 在`Powershell`或者`cmd`中运行`src`文件下的`Icourse.py`，按照提示输入信息
+>5. 此时会在输入的路径中生成一个文本文件，下载链接均在其中，可复制到下载软件中下载
+>6. 将下载好的乱名文件复制到刚刚`下载链接.txt`所在的目录中，返回`Powershell`或`cmd`中输入`Y`或者`y`即可
 
-安装方式见`V1.0`运行教程
 
-#### 3.下载并运行`V2.0`程序源代码
 
-按照`V1.0`运行教程的说明，安装第三方库，下载源代码，解压，进入`src`，即可看到`Icourse.py`文件，在空白处按住`Shift`单击右键，选择`在此处打开Powershell窗口`，输入`python Icourse.py`即可运行。
+### 详细版：
 
-效果如图：
+#### 1.安装Python3.5及以上
 
-运行程序，输入保存地址、课程地址
+如果没有安装Python的话，需要先安装Python
+
+推荐前往[Python官网](https://www.python.org/)下载
+
+如果下载的是`Python3.6`的版本，下载完成后得到一个名为`python-3.6.exe`的文件，双击打开，界面如图所示：
+
+![](https://ws1.sinaimg.cn/large/006mO5TVly1fp20mb2nfxj30n40e8aef.jpg)
+
+一定要把那个`Add Python 3.6 to PATH `选项打上勾。
+
+等进度条跑完，就完成了Python的安装。
+
+#### 2.运行
+
+###### 安装第三方库
+
+本程序使用的第三方库有：`requests`,`BeautifulSoup`,`lxml`，
+
+按下`Win`+`R`键在弹出的框中输入`cmd`打开命令提示符，依次输入:
+
+```powershell
+pip install requests
+pip install bs4
+pip install lxml
+```
+
+###### 下载源代码并运行
+
+![](https://ws1.sinaimg.cn/large/006mO5TVly1fp212zr5n9j312v0gkmza.jpg)
+
+
+
+之后会下载一个`.zip`的压缩包，将其中的内容解压到桌面上会得到如下文件：
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fv9ggu1mw3j30ml05bdg9.jpg)
+
+进入`src`，即可看到`Icourse.py`文件，在空白处按住`Shift`单击右键，选择`在此处打开Powershell窗口`(只有较新的win10版本才有该选项，其他Windows可选择`在Cmd中打开`），输入`python Icourse.py`即可运行。也可以直接双击`start.cmd`运行。
+
+运行程序时，输入保存地址、课程地址
 
 ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfkz2vz7j30xz056mxo.jpg)
 
@@ -89,80 +125,19 @@ ChangeLog:
 ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfqonq43j314u0m1wia.jpg)
 
 
-## V1.0
-### 使用方法：
 
-#### 1.安装Python3.6
-
-本程序由Python3.6.4编写，因此首先需要安安装Python
-
-[Python官网](https://www.python.org/)
-
-[Python3.6.4安装包下载](https://www.python.org/ftp/python/3.6.4/python-3.6.4.exe)
-
-下载完成后得到一个名为`python-3.6.4_2.exe`的文件，双击打开，界面如图所示：
-
-![](https://ws1.sinaimg.cn/large/006mO5TVly1fp20mb2nfxj30n40e8aef.jpg)
-
-一定要把那个`Add Python 3.6 to PATH `选项打上勾。
-
-此时完成了Python的安装。
-
-#### 2.运行前准备
-
-打开浏览器，打开[爱课程](http://www.icourses.cn/home/)官网,搜索自己想要下载的课程，比如搜索`数据结构`，如图
-
-![](https://ws1.sinaimg.cn/large/006mO5TVly1fp21b46ugbj318l0eidkx.jpg)
-
-此时一定要点击`登录`进行登录操作，否则将无法下载。
-
-登录之后复制地址栏的地址即可。
-
-#### 3.运行
-
-##### 方法一：复杂方法
-
-###### 1.安装第三方库
-
-本程序使用的第三方库有：`requests`,`BeautifulSoup`,`lxml`，
-
-按下`Win`+`R`键在弹出的框中输入`cmd`打开命令提示符，依次输入:
-
-```powershell
-pip install requests
-pip install bs4
-pip install lxml
-```
-
-###### 2.下载源代码并运行
-
-![](https://ws1.sinaimg.cn/large/006mO5TVly1fp212zr5n9j312v0gkmza.jpg)
-
-
-
-之后会下载一个`.zip`的压缩包，将其中的内容解压到桌面上会得到如下文件：
-
-![](https://ws1.sinaimg.cn/large/006mO5TVly1fp217h2eeuj30ob035q2x.jpg)
-
-依次点击`SRC`，`V 1.0`，`download.py`即可
-
-##### 方法二：简单方法
-
-无需安装第三方库，相同的方法下载`.zip`文件并解压后，打开`Packaged`，`V 1.0`，`download.exe`即可。
-
-#### 4.运行注意事项
-
-- 下载前请一定要在浏览器中登录爱课程
+#### 3.运行注意事项
 
 - 输入程序的链接格式为`http://www.icourses.cn/sCourse/course_****.html`，
 
   如`http://www.icourses.cn/sCourse/course_5976.html`
 
-- 输入保存地址的例子`D:\学习资料\爱课程`，建议直接到文件管理器中复制路径，如图
+- 输入保存地址的例子`D:\学习资料\爱课程`，不能有空格，建议直接到文件管理器中复制路径，如图
 
   ![](https://ws1.sinaimg.cn/large/006mO5TVly1fp21qd08nwj30wm0640t6.jpg)
 
 - 如果以上操作都正确但无法下载，请联系我
+
 
 
 Python小白，自娱自乐，大神勿喷，手动/doge

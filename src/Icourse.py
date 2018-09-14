@@ -67,23 +67,26 @@ def get_html(id, loc):
     source_list = get_source_link(source_html)
     source_num = len(source_list)
 
-    homework_html = requests.get(homework_url,headers = header)
+    homework_html = requests.get(homework_url, headers=header)
     homework_html.encoding = homework_html.apparent_encoding
-    homework_list = get_homework_and_exampaper_link(homework_html,'习题作业')
+    homework_list = get_homework_and_exampaper_link(homework_html, '习题作业')
     homework_num = len(homework_list)
 
-    exampaper_html = requests.get(exampaper_url,headers = header)    
-    exampaper_html.encoding = exampaper_html.apparent_encoding    
-    exampaper_list = get_homework_and_exampaper_link(exampaper_html,'测试试卷')    
+    exampaper_html = requests.get(exampaper_url, headers=header)
+    exampaper_html.encoding = exampaper_html.apparent_encoding
+    exampaper_list = get_homework_and_exampaper_link(exampaper_html, '测试试卷')
     exampaper_num = len(exampaper_list)
 
-    print('共抓取到：视频' + str(mp4_num) + '条，pdf课件' + str(pdf_num) + '个，习题作业'+ str(homework_num)+'个，测试试卷'+str(exampaper_num)+'个，以及其他资源' +
+    print('共抓取到：视频' + str(mp4_num) + '条，pdf课件' + str(pdf_num) + '个，习题作业' +
+          str(homework_num) + '个，测试试卷' + str(exampaper_num) + '个，以及其他资源' +
           str(source_num) + '条。')
-    write_txt(mp4_list, pdf_list, source_list,homework_list,exampaper_list,loc)
+    write_txt(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
+              loc)
     print('所有的下载链接均已写入保存地址内名为‘下载链接’的文本文件内！')
     choice = input('是否改名？(Y/N)')
     if choice in ['Y', 'y']:
-        chang_name(mp4_list, pdf_list, source_list,homework_list,exampaper_list, loc)
+        change_name(mp4_list, pdf_list, source_list, homework_list,
+                    exampaper_list, loc)
     else:
         print('程序运行结束')
         return
@@ -121,12 +124,13 @@ def get_source_link(html):
 def get_homework_and_exampaper_link(html, name):
     source_list = {}
     soup = BeautifulSoup(html.text, 'lxml')
-    for link in soup.find_all('a', {'data-class':'media'}):
+    for link in soup.find_all('a', {'data-class': 'media'}):
         source_list[link.get('data-url')] = str(name) + link.get('data-title')
     return source_list
 
 
-def write_txt(mp4_list, pdf_list, source_list,homework_list,exampaper_list,loc):
+def write_txt(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
+              loc):
     with open(loc + '\\下载链接.txt', 'w') as f:
         f.write('以下是视频下载链接：')
         f.write('\n')
@@ -207,7 +211,8 @@ def get_download_link(datasid, id):
     return mp4_list, pdf_list
 
 
-def chang_name(mp4_list, pdf_list, source_list, homework_list,exampaper_list,loc):
+def change_name(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
+                loc):
     loc = loc.replace('\\', r'\\') + r'\\'
     list = os.listdir(loc)
     name_dict = {}
@@ -231,6 +236,8 @@ def chang_name(mp4_list, pdf_list, source_list, homework_list,exampaper_list,loc
                 tailor = new_name.split('.')[-1]
                 new_name = new_name.split(tailor)[0] + old_name.split(
                     '.')[-2][-5:] + '.' + tailor
+                if (r'/' in new_name):
+                    new_name = new_name.replace(r'/', ' ')
                 os.rename(old_name, new_name)
             finally:
                 pass
