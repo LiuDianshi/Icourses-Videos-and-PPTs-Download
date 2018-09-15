@@ -83,13 +83,10 @@ def get_html(id, loc):
     write_txt(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
               loc)
     print('所有的下载链接均已写入保存地址内名为‘下载链接’的文本文件内！')
-    choice = input('是否改名？(Y/N)')
-    if choice in ['Y', 'y']:
-        change_name(mp4_list, pdf_list, source_list, homework_list,
+    change_name(mp4_list, pdf_list, source_list, homework_list,
                     exampaper_list, loc)
-    else:
-        print('程序运行结束')
-        return
+    print('已自动生成改名文件 change_name.cmd, 双击运行即可')
+    return
 
 
 def getRess1(html):
@@ -213,40 +210,40 @@ def get_download_link(datasid, id):
 
 def change_name(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
                 loc):
-    loc = loc.replace('\\', r'\\') + r'\\'
-    list = os.listdir(loc)
-    name_dict = {}
-    for key in mp4_list:
-        name_dict[(key.split('/')[-1])] = mp4_list[key]
-    for key in pdf_list:
-        name_dict[(key.split('/')[-1])] = pdf_list[key]
-    for key in source_list:
-        name_dict[(key.split('/')[-1])] = source_list[key]
-    for key in homework_list:
-        name_dict[(key.split('/')[-1])] = homework_list[key]
-    for key in exampaper_list:
-        name_dict[(key.split('/')[-1])] = exampaper_list[key]
-    for item in list:
-        if item in name_dict:
-            old_name = loc + item
-            new_name = loc + name_dict[item] + '.' + item.split('.')[-1]
+    with open(loc + '\\change_name.cmd', 'w') as f:
+        loc = loc.replace('\\', r'\\') + r'\\'
+        i = 0
+        name_dict = {}
+        for key in mp4_list:
+            name_dict[(key.split('/')[-1])] = mp4_list[key]
+        for key in pdf_list:
+            name_dict[(key.split('/')[-1])] = pdf_list[key]
+        for key in source_list:
+            name_dict[(key.split('/')[-1])] = source_list[key]
+        for key in homework_list:
+            name_dict[(key.split('/')[-1])] = homework_list[key]
+        for key in exampaper_list:
+            name_dict[(key.split('/')[-1])] = exampaper_list[key]
+        for key in name_dict:
+            i = i+1
+            old_name = str(key).split(r'/')[-1]
+            tailor = old_name.split('.')[-1]
+            new_name = str(i) + '-' + name_dict[key] + '.' + tailor
+            if(r'/' in new_name):
+            	new_name = new_name.replace(r'/',' ')
             try:
-                os.rename(old_name, new_name)
+            	f.write(r'ren "%s" "%s"&'%(old_name,new_name))
+            	f.write('\n')
             except:
-                tailor = new_name.split('.')[-1]
-                new_name = new_name.split(tailor)[0] + old_name.split(
-                    '.')[-2][-5:] + '.' + tailor
-                if (r'/' in new_name):
-                    new_name = new_name.replace(r'/', ' ')
-                os.rename(old_name, new_name)
+            	continue
             finally:
-                pass
-        else:
-            continue
+            	pass
+        f.close()
 
 
 if __name__ == '__main__':
     loc = input('请输入保存地址(如 D:\爱课程下载):')
+    loc = loc.replace(' ','')
     link = input('请输入课程链接(如 http://www.icourses.cn/sCourse/course_4860.html):')
     cid = get_id(link)
     if cid:

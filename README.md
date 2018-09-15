@@ -1,8 +1,11 @@
 # Icourses-Videos-And-PDF-Download
 ## 爱课程MP4格式视频以及PDF课件下载
 
-
 ## 更新日志：
+
+### V3.0(2018.9.15)
+
+新增自动生成改名程序`change_name.cmd`，双击即可修改文件名，可随时离线修改。
 
 ### V2.7(2018.9.14)
 
@@ -63,8 +66,8 @@
 >2. 下载或clone
 >3. 安装`bs4`,`requests`,`lxml`
 >4. 在`Powershell`或者`cmd`中运行`src`文件下的`Icourse.py`，按照提示输入信息
->5. 此时会在输入的路径中生成一个文本文件，下载链接均在其中，可复制到下载软件中下载
->6. 将下载好的乱名文件复制到刚刚`下载链接.txt`所在的目录中，返回`Powershell`或`cmd`中输入`Y`或者`y`即可
+>5. 此时会在输入的路径中生成一个文本文件`下载链接.txt`，下载链接均在其中，可复制到下载软件中下载，同时会生成一个改名文件`change_name.cmd`，双击即可改名
+>6. 将`change_name.cmd`改名文件复制到刚刚下载好的课程资源文件目录中，双击即可修改
 
 
 
@@ -112,23 +115,29 @@ pip install lxml
 
 运行程序时，输入保存地址、课程地址
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfkz2vz7j30xz056mxo.jpg)
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvanndf2lhj30w305dac7.jpg)
 
 这是在保存地址内会出现`下载链接.txt`文件，里面为该课程所有视频、课件的下载地址，可将链接复制后用第三方下载工具如迅雷下载
+
+同时也会生成一个`change_name.cmd`文件用于改名
+
+如下图所示
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvanz4c50uj30f8050aa2.jpg)
 
 例如将该课程所有的课件地址复制，打开迅雷即可下载
 
 ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfockf7lj30sd0kkjvp.jpg)
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfok1vbzj30yc0nbqaw.jpg)
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvao2hluoaj30yc0na78f.jpg)
 
 下载后的文件名字是乱的
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfq1dszij31540mlgpk.jpg)
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvanndjthgj30vg0lz45q.jpg)
 
-可以使用程序自带的改名功能，只需在刚才的窗口中输入`Y`或者`y`，按下回车键即可
+双击`change_name.cmd`后即可自动改名
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfqonq43j314u0m1wia.jpg)
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvanndo0ixj30vb0ltdld.jpg)
 
 
 
@@ -143,6 +152,8 @@ pip install lxml
   ![](https://ws1.sinaimg.cn/large/006mO5TVly1fp21qd08nwj30wm0640t6.jpg)
 
 - 如果以上操作都正确但无法下载，请联系我
+
+- 本程序仅用于个人学习使用，如果侵害了相关人员的权益，请及时删除
 
 
 
