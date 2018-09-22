@@ -1,4 +1,6 @@
-#coding=utf-8
+# -*- coding: utf-8 -*-
+"""爱课程资源下载"""
+
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -82,7 +84,7 @@ def get_html(id, loc):
           str(source_num) + '条。')
     write_txt(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
               loc)
-    print('所有的下载链接均已写入保存地址内名为‘下载链接’的文本文件内！')
+    print('所有的下载链接均已写入保存地址内名为‘批量下载链接.txt’和‘分条下载链接.txt’的文本文件内！')
     change_name(mp4_list, pdf_list, source_list, homework_list,
                     exampaper_list, loc)
     print('已自动生成改名文件 change_name.cmd, 双击运行即可')
@@ -122,46 +124,45 @@ def get_homework_and_exampaper_link(html, name):
     source_list = {}
     soup = BeautifulSoup(html.text, 'lxml')
     for link in soup.find_all('a', {'data-class': 'media'}):
-        source_list[link.get('data-url')] = str(name) + link.get('data-title')
+        source_list[link.get('data-url')] = str(name) + '-' + link.get('data-title')
     return source_list
 
 
 def write_txt(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
               loc):
-    with open(loc + '\\下载链接.txt', 'w') as f:
-        f.write('以下是视频下载链接：')
-        f.write('\n')
+    with open(loc + '\\批量下载链接.txt', 'w') as f:
+        f.write('以下是视频下载链接：\n\n')
         for key in mp4_list:
-            f.write(key)
-            f.write('\n')
-        f.write('\n')
-        f.write('\n')
-        f.write('以下是课件下载链接：')
-        f.write('\n')
+            f.write(key + '\n')
+        f.write('\n\n以下是课件下载链接：\n\n')
         for key in pdf_list:
-            f.write(key)
-            f.write('\n')
-        f.write('\n')
-        f.write('\n')
-        f.write('以下是其他资源下载链接：')
-        f.write('\n')
+            f.write(key + '\n')
+        f.write('\n\n以下是其他资源下载链接：\n\n')
         for key in source_list:
-            f.write(key)
-            f.write('\n')
-        f.write('\n')
-        f.write('\n')
-        f.write('以下是习题作业下载链接：')
-        f.write('\n')
+            f.write(key + '\n')
+        f.write('\n\n以下是习题作业下载链接：\n\n')
         for key in homework_list:
-            f.write(key)
-            f.write('\n')
-        f.write('\n')
-        f.write('\n')
-        f.write('以下是测试试卷下载链接：')
-        f.write('\n')
+            f.write(key + '\n')
+        f.write('\n\n以下是测试试卷下载链接：\n\n')
         for key in exampaper_list:
-            f.write(key)
-            f.write('\n')
+            f.write(key + '\n')
+        f.close()
+    with open(loc + '\\分条下载链接.txt','w') as f:
+        f.write('以下是视频链接：\n\n')
+        for key in mp4_list:
+            f.write(mp4_list[key] + ' : ' + key + '\n')
+        f.write('\n\n以下是课件下载链接：\n\n')
+        for key in pdf_list:
+            f.write(pdf_list[key] + ' : ' + key + '\n')
+        f.write('\n\n以下是其他资源下载链接：\n\n')
+        for key in source_list:
+            f.write(source_list[key] + ' : ' + key + '\n')
+        f.write('\n\n以下是习题作业下载链接：\n\n')
+        for key in homework_list:
+            f.write(homework_list[key] + ' : ' + key + '\n')
+        f.write('\n\n以下是测试试卷下载链接：\n\n')
+        for key in exampaper_list:
+            f.write(exampaper_list[key] + ' : ' + key + '\n')
         f.close()
 
 
