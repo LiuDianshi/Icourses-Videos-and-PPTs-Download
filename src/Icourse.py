@@ -85,8 +85,8 @@ def get_html(id, loc):
     write_txt(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
               loc)
     print('所有的下载链接均已写入保存地址内名为‘批量下载链接.txt’和‘分条下载链接.txt’的文本文件内！')
-    change_name(mp4_list, pdf_list, source_list, homework_list,
-                    exampaper_list, loc)
+    change_name(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
+                loc)
     print('已自动生成改名文件 change_name.cmd, 双击运行即可')
     return
 
@@ -124,47 +124,55 @@ def get_homework_and_exampaper_link(html, name):
     source_list = {}
     soup = BeautifulSoup(html.text, 'lxml')
     for link in soup.find_all('a', {'data-class': 'media'}):
-        source_list[link.get('data-url')] = str(name) + '-' + link.get('data-title')
+        source_list[link.get(
+            'data-url')] = str(name) + '-' + link.get('data-title')
     return source_list
 
 
 def write_txt(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
               loc):
     with open(loc + '\\批量下载链接.txt', 'w') as f:
-        f.write('以下是视频下载链接：\n\n')
-        for key in mp4_list:
-            f.write(key + '\n')
-        f.write('\n\n以下是课件下载链接：\n\n')
-        for key in pdf_list:
-            f.write(key + '\n')
-        f.write('\n\n以下是其他资源下载链接：\n\n')
-        for key in source_list:
-            f.write(key + '\n')
-        f.write('\n\n以下是习题作业下载链接：\n\n')
-        for key in homework_list:
-            f.write(key + '\n')
-        f.write('\n\n以下是测试试卷下载链接：\n\n')
-        for key in exampaper_list:
-            f.write(key + '\n')
-        f.close()
-    with open(loc + '\\分条下载链接.txt','w') as f:
         f.write('以下是视频链接：\n\n')
-        for key in mp4_list:
-            f.write(mp4_list[key] + ' : ' + key + '\n')
+        write_list2(mp4_list,f)
         f.write('\n\n以下是课件下载链接：\n\n')
-        for key in pdf_list:
-            f.write(pdf_list[key] + ' : ' + key + '\n')
+        write_list2(pdf_list,f)
         f.write('\n\n以下是其他资源下载链接：\n\n')
-        for key in source_list:
-            f.write(source_list[key] + ' : ' + key + '\n')
+        write_list2(source_list,f)
         f.write('\n\n以下是习题作业下载链接：\n\n')
-        for key in homework_list:
-            f.write(homework_list[key] + ' : ' + key + '\n')
+        write_list2(homework_list,f)
         f.write('\n\n以下是测试试卷下载链接：\n\n')
-        for key in exampaper_list:
-            f.write(exampaper_list[key] + ' : ' + key + '\n')
+        write_list2(exampaper_list,f)
+        f.close()
+    with open(loc + '\\分条下载链接.txt', 'w') as f:
+        f.write('以下是视频链接：\n\n')
+        write_list1(mp4_list,f)
+        f.write('\n\n以下是课件下载链接：\n\n')
+        write_list1(pdf_list,f)
+        f.write('\n\n以下是其他资源下载链接：\n\n')
+        write_list1(source_list,f)
+        f.write('\n\n以下是习题作业下载链接：\n\n')
+        write_list1(homework_list,f)
+        f.write('\n\n以下是测试试卷下载链接：\n\n')
+        write_list1(exampaper_list,f)
         f.close()
 
+def write_list1(write_list,f):
+    for key in write_list:
+        try:
+            f.write(write_list[key] + ' : ' + key + '\n')
+        except:
+            continue
+        finally:
+            pass
+
+def write_list2(write_list,f):
+    for key in write_list:
+        try:
+            f.write(key + '\n')
+        except:
+            continue
+        finally:
+            pass
 
 def get_id(link):
     cid = re.findall(r'[0-9]+', link)[0]
@@ -201,11 +209,11 @@ def get_download_link(datasid, id):
             loc = json['model']['listRes']
             for i in loc:
                 if i['mediaType'] == 'mp4':
-                    mp4_list[i[
-                        'fullResUrl']] = i['resSortDesc'] + '-' + i['title']
+                    if 'fullResUrl' in i:
+                        mp4_list[i['fullResUrl']] = i['resSortDesc'] + '-' + i['title']
                 elif i['mediaType'] in ['ppt', 'pdf']:
-                    pdf_list[i[
-                        'fullResUrl']] = i['resSortDesc'] + '-' + i['title']
+                    if 'fullResUrl' in i:
+                        pdf_list[i['fullResUrl']] = i['resSortDesc'] + '-' + i['title']
     return mp4_list, pdf_list
 
 
@@ -226,25 +234,25 @@ def change_name(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
         for key in exampaper_list:
             name_dict[(key.split('/')[-1])] = exampaper_list[key]
         for key in name_dict:
-            i = i+1
+            i = i + 1
             old_name = str(key).split(r'/')[-1]
             tailor = old_name.split('.')[-1]
             new_name = str(i) + '-' + name_dict[key] + '.' + tailor
-            if(r'/' in new_name):
-            	new_name = new_name.replace(r'/',' ')
+            if (r'/' in new_name):
+                new_name = new_name.replace(r'/', ' ')
             try:
-            	f.write(r'ren "%s" "%s"&'%(old_name,new_name))
-            	f.write('\n')
+                f.write(r'ren "%s" "%s"&' % (old_name, new_name))
+                f.write('\n')
             except:
-            	continue
+                continue
             finally:
-            	pass
+                pass
         f.close()
 
 
 if __name__ == '__main__':
     loc = input('请输入保存地址(如 D:\爱课程下载):')
-    loc = loc.replace(' ','')
+    loc = loc.replace(' ', '')
     link = input('请输入课程链接(如 http://www.icourses.cn/sCourse/course_4860.html):')
     cid = get_id(link)
     if cid:
