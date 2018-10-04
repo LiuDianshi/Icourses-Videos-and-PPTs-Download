@@ -7,6 +7,9 @@ import re
 import json
 import lxml
 import os
+from change_name import change_name
+from write_txt import write_txt
+from config import mode
 
 
 def get_course_name(id):
@@ -83,11 +86,11 @@ def get_html(id, loc):
           str(homework_num) + '个，测试试卷' + str(exampaper_num) + '个，以及其他资源' +
           str(source_num) + '条。')
     write_txt(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
-              loc)
+              loc, mode)
     print('所有的下载链接均已写入保存地址内名为‘批量下载链接.txt’和‘分条下载链接.txt’的文本文件内！')
     change_name(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
-                loc)
-    print('已自动生成改名文件 change_name.cmd, 双击运行即可')
+                loc, mode)
+    print('已自动生成改名文件 !')
     return
 
 
@@ -129,51 +132,6 @@ def get_homework_and_exampaper_link(html, name):
     return source_list
 
 
-def write_txt(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
-              loc):
-    with open(loc + '\\批量下载链接.txt', 'w') as f:
-        f.write('以下是视频链接：\n\n')
-        write_list2(mp4_list,f)
-        f.write('\n\n以下是课件下载链接：\n\n')
-        write_list2(pdf_list,f)
-        f.write('\n\n以下是其他资源下载链接：\n\n')
-        write_list2(source_list,f)
-        f.write('\n\n以下是习题作业下载链接：\n\n')
-        write_list2(homework_list,f)
-        f.write('\n\n以下是测试试卷下载链接：\n\n')
-        write_list2(exampaper_list,f)
-        f.close()
-    with open(loc + '\\分条下载链接.txt', 'w') as f:
-        f.write('以下是视频链接：\n\n')
-        write_list1(mp4_list,f)
-        f.write('\n\n以下是课件下载链接：\n\n')
-        write_list1(pdf_list,f)
-        f.write('\n\n以下是其他资源下载链接：\n\n')
-        write_list1(source_list,f)
-        f.write('\n\n以下是习题作业下载链接：\n\n')
-        write_list1(homework_list,f)
-        f.write('\n\n以下是测试试卷下载链接：\n\n')
-        write_list1(exampaper_list,f)
-        f.close()
-
-def write_list1(write_list,f):
-    for key in write_list:
-        try:
-            f.write(write_list[key] + ' : ' + key + '\n')
-        except:
-            continue
-        finally:
-            pass
-
-def write_list2(write_list,f):
-    for key in write_list:
-        try:
-            f.write(key + '\n')
-        except:
-            continue
-        finally:
-            pass
-
 def get_id(link):
     cid = re.findall(r'[0-9]+', link)[0]
     if cid:
@@ -210,48 +168,21 @@ def get_download_link(datasid, id):
             for i in loc:
                 if i['mediaType'] == 'mp4':
                     if 'fullResUrl' in i:
-                        mp4_list[i['fullResUrl']] = i['resSortDesc'] + '-' + i['title']
+                        mp4_list[i['fullResUrl']] = i['resSortDesc'] + \
+                            '-' + i['title']
                 elif i['mediaType'] in ['ppt', 'pdf']:
                     if 'fullResUrl' in i:
-                        pdf_list[i['fullResUrl']] = i['resSortDesc'] + '-' + i['title']
+                        pdf_list[i['fullResUrl']] = i['resSortDesc'] + \
+                            '-' + i['title']
     return mp4_list, pdf_list
 
 
-def change_name(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
-                loc):
-    with open(loc + '\\change_name.cmd', 'w') as f:
-        loc = loc.replace('\\', r'\\') + r'\\'
-        i = 0
-        name_dict = {}
-        for key in mp4_list:
-            name_dict[(key.split('/')[-1])] = mp4_list[key]
-        for key in pdf_list:
-            name_dict[(key.split('/')[-1])] = pdf_list[key]
-        for key in source_list:
-            name_dict[(key.split('/')[-1])] = source_list[key]
-        for key in homework_list:
-            name_dict[(key.split('/')[-1])] = homework_list[key]
-        for key in exampaper_list:
-            name_dict[(key.split('/')[-1])] = exampaper_list[key]
-        for key in name_dict:
-            i = i + 1
-            old_name = str(key).split(r'/')[-1]
-            tailor = old_name.split('.')[-1]
-            new_name = str(i) + '-' + name_dict[key] + '.' + tailor
-            if (r'/' in new_name):
-                new_name = new_name.replace(r'/', ' ')
-            try:
-                f.write(r'ren "%s" "%s"&' % (old_name, new_name))
-                f.write('\n')
-            except:
-                continue
-            finally:
-                pass
-        f.close()
-
-
 if __name__ == '__main__':
-    loc = input('请输入保存地址(如 D:\爱课程下载):')
+    if(mode == 1):
+        info = '/Users/dianshi/Dianshi'
+    if (mode == 0):
+        info = 'D:\爱课程下载'
+    loc = input('请输入保存地址(' + info + ':)')
     loc = loc.replace(' ', '')
     link = input('请输入课程链接(如 http://www.icourses.cn/sCourse/course_4860.html):')
     cid = get_id(link)
