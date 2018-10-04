@@ -3,6 +3,10 @@
 
 ## 更新日志：
 
+### V3.3(2018.10.4)
+
+新增Linux和macOS的支持，目前已支持在三大平台运行，具体操作看下面的使用教程。
+
 ### V3.2(2018.9.30)
 
 修复了某些情况下无法改名和下载的bug
@@ -68,6 +72,8 @@
 
 ## 使用教程：
 
+### 在Windows上运行：
+
 ### 简略无废话版：
 
 如下：
@@ -121,7 +127,7 @@ pip install lxml
 
 ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fv9ggu1mw3j30ml05bdg9.jpg)
 
-进入`src`，即可看到`Icourse.py`文件，在空白处按住`Shift`单击右键，选择`在此处打开Powershell窗口`(只有较新的win10版本才有该选项，其他Windows可选择`在Cmd中打开`），输入`python Icourse.py`即可运行。也可以直接双击`start.cmd`运行。
+进入`src`直接双击`start.cmd`运行。
 
 运行程序时，输入保存地址、课程地址
 
@@ -165,6 +171,59 @@ pip install lxml
 
 - 本程序仅用于个人学习使用，如果侵害了相关人员的权益，请及时删除
 
+### 在Linux/macOs上运行:
+
+### 简略无废话版：
+
+如下：
+
+> 1. 安装Python(建议Python3.5以上)
+> 2. 下载或clone
+> 3. 安装`bs4`,`requests`,`lxml`三个Python库
+> 4. 给予权限后运行`start.sh`，按照提示输入信息
+> 5. 此时会在输入的路径中生成两个文本文件`批量下载链接.txt`和`分条下载链接.txt`，下载链接均在其中，可根据需要复制到下载软件中下载，同时会生成一个改名文件`change_name.sh`，给予权限并运行即可改名
+
+
+
+### 详细版：
+
+#### 1.安装Python3.5及以上及第三方库
+
+在不同的Linux发行版上安装Python3的方法也各不相同，请自行查询
+
+在macOS上安装Python推荐使用`homebrew`
+
+安装三个第三方库的方法也与Windows一样
+
+### 2.下载源代码并解压
+
+与Windows相同
+
+### 3.运行
+
+在终端内切换到解压目录
+
+在终端输入`chmod 777 start.sh`给予权限，然后输入`./start.sh`运行，如下图：
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvvknjwhujj30vo0p4766.jpg)
+
+按照提示输入信息即可：
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvvknk3q5wj30vo0p4q7g.jpg)
+
+运行结束后会在输入的路径内产生三个文件：
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvvknkescbj316s0o8dpp.jpg)
+
+根据需要复制相应的下载链接至下载软件进行下载，下载好的文件名字是乱的：
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvvknkpnqoj316s0t64ge.jpg)
+
+此时在终端切换到该路径下，输入`chmod 777 change_name.sh`然后输入`./change_name.sh`即可改名
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvvknlbr8aj30vo0p4gmp.jpg)
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvvknl32gkj316s0t6wwj.jpg)
 
 
 Python小白，自娱自乐，大神勿喷，手动/doge
