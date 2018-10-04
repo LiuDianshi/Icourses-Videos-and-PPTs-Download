@@ -182,7 +182,7 @@ if __name__ == '__main__':
         info = '/Users/dianshi/Dianshi'
     if (mode == 0):
         info = 'D:\爱课程下载'
-    loc = input('请输入保存地址(' + info + ':)')
+    loc = input('请输入保存地址(如 ' + info + '): ')
     loc = loc.replace(' ', '')
     link = input('请输入课程链接(如 http://www.icourses.cn/sCourse/course_4860.html):')
     cid = get_id(link)

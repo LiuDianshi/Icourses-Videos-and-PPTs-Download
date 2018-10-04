@@ -127,7 +127,7 @@ pip install lxml
 
 ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fv9ggu1mw3j30ml05bdg9.jpg)
 
-进入`src`直接双击`start.cmd`运行。
+进入`src`，即可看到`Icourse.py`文件，在空白处按住`Shift`单击右键，选择`在此处打开Powershell窗口`(只有较新的win10版本才有该选项，其他Windows可选择`在Cmd中打开`），输入`python Icourse.py`即可运行。也可以直接双击`start.cmd`运行。
 
 运行程序时，输入保存地址、课程地址
 
@@ -180,7 +180,7 @@ pip install lxml
 > 1. 安装Python(建议Python3.5以上)
 > 2. 下载或clone
 > 3. 安装`bs4`,`requests`,`lxml`三个Python库
-> 4. 给予权限后运行`start.sh`，按照提示输入信息
+> 4. 给予权限后运行`start.sh`(不能直接运行Icourse.py)，按照提示输入信息
 > 5. 此时会在输入的路径中生成两个文本文件`批量下载链接.txt`和`分条下载链接.txt`，下载链接均在其中，可根据需要复制到下载软件中下载，同时会生成一个改名文件`change_name.sh`，给予权限并运行即可改名
 
 
