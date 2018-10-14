@@ -132,13 +132,13 @@ pip install lxml
 
 之后会下载一个`.zip`的压缩包，将其中的内容解压到桌面上会得到如下文件：
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fv9ggu1mw3j30ml05bdg9.jpg)
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fw88z4g95hj30p405ygm7.jpg)
 
-进入`src`，即可看到`Icourse.py`文件，在空白处按住`Shift`单击右键，选择`在此处打开Powershell窗口`(只有较新的win10版本才有该选项，其他Windows可选择`在Cmd中打开`），输入`python Icourse.py`即可运行。也可以直接双击`start.cmd`运行。
+在空白处按住`Shift`单击右键，选择`在此处打开Powershell窗口`(只有较新的win10版本才有该选项，其他Windows可选择`在Cmd中打开`，输入`python run.py`即可运行。也可以直接双击`start.cmd`运行。
 
 运行程序时，输入保存地址、课程地址
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvanndf2lhj30w305dac7.jpg)
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fw892ureyrj312q05gq5c.jpg)
 
 这是在保存地址内会出现`下载链接.txt`文件，里面为该课程所有视频、课件的下载地址，可将链接复制后用第三方下载工具如迅雷下载
 
@@ -148,19 +148,21 @@ pip install lxml
 
 ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvanz4c50uj30f8050aa2.jpg)
 
-例如将该课程所有的课件地址复制，打开迅雷即可下载
+例如随便选择几个该课程的课件地址复制
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fqjfockf7lj30sd0kkjvp.jpg)
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fw894r0qr3j30tp0hgwp7.jpg)
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvao2hluoaj30yc0na78f.jpg)
+打开迅雷即可下载
+
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fw896acb5gj30x90m3786.jpg)
 
 下载后的文件名字是乱的
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvanndjthgj30vg0lz45q.jpg)
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fw897ccbpqj30vg0llter.jpg)
 
 双击`change_name.cmd`后即可自动改名
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvanndo0ixj30vb0ltdld.jpg)
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fw89cqit04j30vf0lmjw5.jpg)
 
 
 

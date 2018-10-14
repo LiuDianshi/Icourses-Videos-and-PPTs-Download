@@ -21,11 +21,9 @@ def get_res_link_new(cid):
                 try:
                     if k.get('fullResUrl'):
                         if k.get('mediaType') == 'mp4':
-                            mp4_list[k.get('fullResUrl')] = str(
-                                i) + '-' + str(j) + k.get('title')
+                            mp4_list[k.get('fullResUrl')] = k.get('title')
                         if k.get('mediaType') in ['pdf', 'ppt']:
-                            pdf_list[k.get('fullResUrl')] = str(
-                                i) + '-' + str(j) + k.get('title')
+                            pdf_list[k.get('fullResUrl')] = k.get('title')
                 except:
                     continue
                 finally:
