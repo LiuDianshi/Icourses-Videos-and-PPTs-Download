@@ -30,4 +30,4 @@ def get_res_link_new(cid):
                     continue
                 finally:
                     pass
-    return {}, {}
+    return mp4_list,pdf_list
