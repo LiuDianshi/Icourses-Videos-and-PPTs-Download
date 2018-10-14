@@ -13,7 +13,10 @@
 
 2.保持不断更新
 
-3.如果这个程序帮到了你，欢迎star
+3.如果Github无法下载，可[点我](https://www.jianguoyun.com/p/DQDj3L0Q9tjLBhi7gno)从坚果云下载
+
+4.如果这个程序帮到了你，欢迎star
+
 
 ### 更新日志：
 
