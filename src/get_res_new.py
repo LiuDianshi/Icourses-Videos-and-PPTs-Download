@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""新的解析方式，解析PPT课件"""
+
 import requests
 import json
 

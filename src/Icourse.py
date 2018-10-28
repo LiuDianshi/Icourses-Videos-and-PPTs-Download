@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""爱课程资源下载"""
+"""程序主体"""
 
 import requests
 from bs4 import BeautifulSoup

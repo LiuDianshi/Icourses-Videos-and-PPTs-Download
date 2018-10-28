@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""生成改名文件"""
+
+
 def change_name_windows(name_dict, loc):
     with open(loc + '\\change_name.cmd', 'w') as f:
         loc = loc.replace('\\', r'\\') + r'\\'

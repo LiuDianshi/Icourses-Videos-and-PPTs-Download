@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""把结果写入txt文件"""
+
+
 def write(mp4_list, pdf_list, source_list, homework_list, exampaper_list,
           loc1, loc2):
     with open(loc1, 'w') as f:

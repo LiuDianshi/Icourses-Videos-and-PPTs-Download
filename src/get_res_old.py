@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""旧的解析方式，解析PDF课件"""
+
 from bs4 import BeautifulSoup
 import requests
 
