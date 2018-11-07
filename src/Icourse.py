@@ -57,18 +57,18 @@ def get_html(id, loc, mode):
         id)
     exampaper_url = 'http://www.icourses.cn/web/sword/portal/testPaper?cid=' + str(
         id)
-    html = requests.get(url, headers=header)
-    html.encoding = html.apparent_encoding
-    datasid1 = getRess1(html)
-    datasid2 = getRess2(html)
-    for i in range(len(datasid2)):
-        if datasid2[i] not in datasid1:
-            datasid1.append(datasid2[i])
     try:
         mp4_list, pdf_list = get_res_link_new(id)
         blooper = 5/(len(mp4_list) * len(pdf_list))
     except:
-        print('解析PPT失败，已使用默认解析方法')
+        print('解析PPT失败， 开始调用默认解析方法')
+        html = requests.get(url, headers=header)
+        html.encoding = html.apparent_encoding
+        datasid1 = getRess1(html)
+        datasid2 = getRess2(html)
+        for i in range(len(datasid2)):
+            if datasid2[i] not in datasid1:
+                datasid1.append(datasid2[i])
         mp4_list, pdf_list = get_download_link(datasid1, id)
     finally:
         pass
