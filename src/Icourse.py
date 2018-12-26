@@ -59,9 +59,9 @@ def get_html(id, loc, mode):
         id)
     try:
         mp4_list, pdf_list = get_res_link_new(id)
-        blooper = 5/(len(mp4_list) * len(pdf_list))
+        blooper = 5/(len(mp4_list) * len(pdf_list)*0)
     except:
-        print('解析PPT失败， 开始调用默认解析方法')
+        # print('解析PPT失败， 开始调用默认解析方法')
         html = requests.get(url, headers=header)
         html.encoding = html.apparent_encoding
         datasid1 = getRess1(html)
@@ -116,14 +116,21 @@ def get_id(link):
 
 
 def Icourse(mode, loc):
+    print('本程序会不定期更新以修复bug和提高稳定性，使用之前请记得检查更新')
     if(mode == 1):
         info = '/Users/dianshi/Dianshi'
     if (mode == 0):
         info = 'D:\爱课程下载'
     if loc is '':
         loc = input('请输入保存地址(如 ' + info + '): ')
+    if(len(loc) == 0):
+        print('地址输入错误')
+        exit()
     loc = loc.replace(' ', '')
     link = input('请输入课程链接(如 http://www.icourses.cn/sCourse/course_4860.html):')
+    if(len(link) == 0):
+        print('地址输入错误')
+        exit()
     cid = get_id(link)
     if cid:
         get_course_name(cid)
