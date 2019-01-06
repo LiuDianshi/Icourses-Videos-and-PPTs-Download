@@ -28,7 +28,7 @@ def get_course_name(id):
         pass
 
 
-def get_html(id, loc, mode):
+def get_html(id, loc, mode, ppt_bool):
     header = {
         'Accept':
         '*/*',
@@ -58,10 +58,16 @@ def get_html(id, loc, mode):
     exampaper_url = 'http://www.icourses.cn/web/sword/portal/testPaper?cid=' + str(
         id)
     try:
-        mp4_list, pdf_list = get_res_link_new(id)
-        blooper = 5/(len(mp4_list) * len(pdf_list)*0)
+        if (ppt_bool == 1):
+            print('调用PPT解析方法：')
+            mp4_list, pdf_list = get_res_link_new(id)
+        else:
+            mp4_list = {}
+            pdf_list = {}
+        blooper = 5 / (len(mp4_list) * len(pdf_list))
     except:
         # print('解析PPT失败， 开始调用默认解析方法')
+        print('调用PDF解析方法：')
         html = requests.get(url, headers=header)
         html.encoding = html.apparent_encoding
         datasid1 = getRess1(html)
@@ -116,7 +122,6 @@ def get_id(link):
 
 
 def Icourse(mode, loc):
-    print('本程序会不定期更新以修复bug和提高稳定性，使用之前请记得检查更新')
     if(mode == 1):
         info = '/Users/dianshi/Dianshi'
     if (mode == 0):
@@ -131,7 +136,8 @@ def Icourse(mode, loc):
     if(len(link) == 0):
         print('地址输入错误')
         exit()
+    ppt_bool = int(input('是否解析PPT(可能无法获取完整资源)？(是1/否0)'))
     cid = get_id(link)
     if cid:
         get_course_name(cid)
-        get_html(cid, loc, mode)
+        get_html(cid, loc, mode, ppt_bool)
