@@ -1,7 +1,7 @@
 # Icourses-Videos-and-PPTs-Download
 ## 爱课程视频以及课件下载
 
-这个啰嗦的文件的目录：说明、更新日志、使用教程
+这个啰嗦的文件的目录：说明-->更新日志-->使用教程
 
 ### 说明：
 
@@ -13,7 +13,7 @@
 
 2.保持不断更新
 
-3.如果Github无法下载，可[点我](https://www.jianguoyun.com/p/DQDj3L0Q9tjLBhi7gno)从坚果云下载
+3.已发布[Release](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases)，直接下载运行即可 ，无需安装Python
 
 4.如果这个程序帮到了你，欢迎star
 
@@ -22,6 +22,8 @@
 V1.3.6.2(2019.1.7)
 
 恢复了PPT解析，可在运行时选择是否使用。
+
+已发布[Release](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases)(2019.1.8)，无需安装Python和第三方库，下载运行即可，详见下面的使用教程。
 
 V1.3.6.1(2018.12.26)
 
@@ -99,74 +101,33 @@ V1.2（2018.4.20）
 
 ## 使用教程：
 
+如果以下教程无法正常运行可选择从源代码运行：[点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/blob/master/从源代码运行.html)
+
 ### 在Windows上运行：
 
-### 简略无废话版：
+#### 1.下载
 
-如下：
+- 前往Github的Release的页面下载已经打包好的程序
 
->1. 安装Python(建议Python3.5以上)，在安装时选准从选择`将Python添加至环境变量`
->2. 下载或clone
->3. 安装`bs4`,`requests`,`lxml`
->4. 在`Powershell`或者`cmd`中运行`run.py`，或者直接电机`start.cmd`文件，按照提示输入信息
->5. 此时会在输入的路径中生成两个文本文件`批量下载链接.txt`和`分条下载链接.txt`，下载链接均在其中，可根据需要复制到下载软件中下载，同时会生成一个改名文件`change_name.cmd`，双击即可改名
->6. 将`change_name.cmd`改名文件复制到刚刚下载好的课程资源文件目录中，双击即可修改
+  ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fyzlmxg3ebj313g0kj40l.jpg)
+
+  ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fyzlmxn6onj30xa0dsjsk.jpg)
 
 
+- 双击运行
 
-### 详细版：
+  按照提示输入相关信息即可，运行结束后或出错窗口会自动关闭(如果程序出现bug或者输入错误会造成闪退)
 
-#### 1.安装Python3.5及以上
-
-如果没有安装Python的话，需要先安装Python
-
-推荐前往[Python官网](https://www.python.org/)下载
-
-如果下载的是`Python3.6`的版本，下载完成后得到一个名为`python-3.6.exe`的文件，双击打开，界面如图所示：
-
-![](https://ws1.sinaimg.cn/large/006mO5TVly1fp20mb2nfxj30n40e8aef.jpg)
-
-一定要把那个`Add Python 3.6 to PATH `选项打上勾。
-
-等进度条跑完，就完成了Python的安装。
-
-#### 2.运行
-
-###### 安装第三方库
-
-本程序使用的第三方库有：`requests`,`BeautifulSoup`,`lxml`，
-
-按下`Win`+`R`键在弹出的框中输入`cmd`打开命令提示符，依次输入:
-
-```powershell
-pip install requests
-pip install bs4
-pip install lxml
-```
-
-###### 下载源代码并运行
-
-![](https://ws1.sinaimg.cn/large/006mO5TVly1fp212zr5n9j312v0gkmza.jpg)
+  ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fyzm85sq36j30xz0hqab4.jpg)
 
 
+- 运行结束后会在输入的目录内产生以下文件
 
-之后会下载一个`.zip`的压缩包，将其中的内容解压到桌面上会得到如下文件：
+  ![](https://ws1.sinaimg.cn/large/006y4Bmtly1fyzm9q1o7xj30y50jwq4e.jpg)
 
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fw88z4g95hj30p405ygm7.jpg)
-
-在空白处按住`Shift`单击右键，选择`在此处打开Powershell窗口`(只有较新的win10版本才有该选项，其他Windows可选择`在Cmd中打开`，输入`python run.py`即可运行。也可以直接双击`start.cmd`运行。
-
-运行程序时，输入保存地址、课程地址
-
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fw892ureyrj312q05gq5c.jpg)
-
-这是在保存地址内会出现`下载链接.txt`文件，里面为该课程所有视频、课件的下载地址，可将链接复制后用第三方下载工具如迅雷下载
+`批量下载链接.txt`和`分条下载链接.txt`为该课程所有视频、课件的下载地址，可将链接复制后用第三方下载工具如迅雷下载
 
 同时也会生成一个`change_name.cmd`文件用于改名
-
-如下图所示
-
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fvanz4c50uj30f8050aa2.jpg)
 
 例如随便选择几个该课程的课件地址复制
 
@@ -202,45 +163,9 @@ pip install lxml
 
 ### 在Linux/macOs上运行:
 
-### 简略无废话版：
-
-如下：
-
-> 1. 安装Python(建议Python3.5以上)
-> 2. 下载或clone
-> 3. 安装`bs4`,`requests`,`lxml`三个Python库
-> 4. 修改配置文件`config.py`，给予权限后运行`start.sh`，或者直接运行run.py，按照提示输入信息
-> 5. 此时会在输入的路径中生成两个文本文件`批量下载链接.txt`和`分条下载链接.txt`，下载链接均在其中，可根据需要复制到下载软件中下载，同时会生成一个改名文件`change_name.sh`，给予权限并运行即可改名
-
-
-
-### 详细版：
-
-#### 1.安装Python3.5及以上及第三方库
-
-在不同的Linux发行版上安装Python3的方法也各不相同，请自行查询
-
-在macOS上安装Python推荐使用`homebrew`
-
-安装三个第三方库的方法也与Windows一样
-
-### 2.下载源代码并解压
-
-与Windows相同
-
-### 3.运行
-
-在终端内切换到解压目录
-
-打开config.py文件修改配置，将`mode`的值改为1
-
-![](https://ws1.sinaimg.cn/large/006y4Bmtly1fw88fhft3nj30zk0rwq4k.jpg)
-
-在终端输入`chmod 777 start.sh`给予权限，然后输入`./start.sh`运行，或者直接运行`run.py`如下图：![](https://ws1.sinaimg.cn/large/006y4Bmtly1fw88j4jx72j30vo0p4di3.jpg)
+下载运行环节，与Windows基本相同
 
 按照提示输入信息即可。
-
-如果PPT文件解析失败会自动调用原解析文件解析pdf课件
 
 运行结束后会在输入的路径内产生三个文件：
 
