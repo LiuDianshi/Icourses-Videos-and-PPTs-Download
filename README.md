@@ -165,7 +165,11 @@ V1.2（2018.4.20）
 
 下载运行环节，与Windows基本相同
 
-按照提示输入信息即可。
+下载完成后，如下图所示
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fyzn8wga1ej319k0u8qdl.jpg)
+
+在终端中打开该路径，输入`chmod 777 IcourseDownloade_macOS_1.0.0`,再输入`./IcourseDownloade_macOS_1.0.0`即可运行按照提示输入信息即可。如下图所示
+![](https://ws1.sinaimg.cn/large/006y4Bmtly1fyzneo2j57j30vo0p4q6k.jpg)
 
 运行结束后会在输入的路径内产生三个文件：
 
