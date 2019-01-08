@@ -101,7 +101,7 @@ V1.2（2018.4.20）
 
 ## 使用教程：
 
-如果以下教程无法正常运行可选择从源代码运行：[点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/blob/master/从源代码运行.html)
+如果以下教程无法正常运行可选择从源代码运行：[点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/blob/master/从源代码运行.md)
 
 ### 在Windows上运行：
 
