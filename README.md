@@ -15,9 +15,16 @@
 
 3.已发布[Release](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases)，直接下载运行即可 ，无需安装Python
 
-4.如果这个程序帮到了你，欢迎star
+4.如果这个程序帮到了你，欢迎star，也欢迎捐赠
+![](http://ww1.sinaimg.cn/large/006y4Bmtly1g03wzdcmmej30m80gowli.jpg)
 
 ### 更新日志：
+
+V1.3.8(2019.2.12 对应release为v1.2.0)
+
+修复了若干bug，优化了文件改名的逻辑
+[点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases/tag/v1.2.0)下载
+
 
 V1.3.7(2019.1.22 对应release为v1.1.0)
 
