@@ -23,12 +23,14 @@
 V1.3.8(2019.2.12 对应release为v1.2.0)
 
 修复了若干bug，优化了文件改名的逻辑
+
 [点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases/tag/v1.2.0)下载
 
 
 V1.3.7(2019.1.22 对应release为v1.1.0)
 
 终于写好了图形界面了，再也不用对着丑陋的命令行操作了！
+
 [点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases/tag/v1.1.0)下载
 
 
