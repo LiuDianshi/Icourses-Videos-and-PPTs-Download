@@ -11,14 +11,18 @@
 
 1.作者是个门外汉，所以代码写得特别烂，但同时也在不断优化
 
-2.保持不断更新
+2.保持不断更新和修复bug
 
 3.已发布[Release](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases)，直接下载运行即可 ，无需安装Python
 
-4.如果这个程序帮到了你，欢迎star，也欢迎捐赠
+4.如果这个程序帮到了你，欢迎star，如果你想请我吃个手抓饼可以扫以下二维码😊
 ![](http://ww1.sinaimg.cn/large/006y4Bmtly1g03wzdcmmej30m80gowli.jpg)
 
 ### 更新日志：
+
+V1.3.9(2019.2.18 对应release为v1.2.1)
+
+新增检查更新功能，优化了PPT模式解析时文件的命名方式及极个别情况下资源不完整的问题
 
 V1.3.8(2019.2.12 对应release为v1.2.0)
 
@@ -38,7 +42,8 @@ V1.3.7(2019.1.22 对应release为v1.1.0)
 
 #### 写在前面：
 1.如果以下教程无法正常运行可选择从源代码运行：[点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/blob/master/从源代码运行.md)
-2.为保证可用，Github上提供的将暂时保持在V1.3.7版本，直至最新版本的程序趋于稳定，如果需要最新版本的源代码请给我反馈。
+2.为保证可用，Github上提供的将暂时保持在V1.3.7版本，直至最新版本的程序趋于稳定，如果需要最新版本的源代码可在release处下载。
+3.绝大多数情况下PDF模式解析的资源是完整的，如果PPT模式解析出错或资源不完整，可尝试PDF方式解析或在您方便时给我反馈。
 
 ### 在Windows上运行：
 
@@ -97,7 +102,7 @@ V1.3.7(2019.1.22 对应release为v1.1.0)
 
   ![](https://ws1.sinaimg.cn/large/006mO5TVly1fp21qd08nwj30wm0640t6.jpg)
 
-- 保存路径应尽可能简单，建议在非C盘的根目录内新建一个简单的文件夹来输入，比如`D:\爱课程`，不要有一些乱七八糟的符号
+- 保存路径应尽可能简单，比如`D:\爱课程`，建议不要有一些乱七八糟的符号
 
 - 不能下载中国大学Mooc资源不能下载中国大学Mooc资源不能下载中国大学Mooc资源
 
