@@ -42,7 +42,9 @@ V1.3.7(2019.1.22 对应release为v1.1.0)
 
 #### 写在前面：
 1.如果以下教程无法正常运行可选择从源代码运行：[点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/blob/master/从源代码运行.md)
+
 2.为保证可用，Github上提供的将暂时保持在V1.3.7版本，直至最新版本的程序趋于稳定，如果需要最新版本的源代码可在release处下载。
+
 3.绝大多数情况下PDF模式解析的资源是完整的，如果PPT模式解析出错或资源不完整，可尝试PDF方式解析或在您方便时给我反馈。
 
 ### 在Windows上运行：
