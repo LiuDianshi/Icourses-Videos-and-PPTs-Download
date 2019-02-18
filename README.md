@@ -24,6 +24,8 @@ V1.3.9(2019.2.18 对应release为v1.2.1)
 
 新增检查更新功能，优化了PPT模式解析时文件的命名方式及极个别情况下资源不完整的问题
 
+[点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases/tag/v1.2.1)下载
+
 V1.3.8(2019.2.12 对应release为v1.2.0)
 
 修复了若干bug，优化了文件改名的逻辑
