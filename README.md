@@ -20,6 +20,12 @@
 
 ### 更新日志：
 
+V1.3.9.1(2019.4.9 对应release为v1.2.2)
+
+修复 在Windows下使用时会出现的改名乱码问题
+
+[点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases/tag/v1.2.2)下载
+
 V1.3.9(2019.2.18 对应release为v1.2.1)
 
 新增检查更新功能，优化了PPT模式解析时文件的命名方式及极个别情况下资源不完整的问题
@@ -141,9 +147,7 @@ V1.3.7(2019.1.22 对应release为v1.1.0)
 
 Python小白，自娱自乐，大神勿喷，手动/doge
 
-QQ : 1833727822(微信同号)
-
-微博：[@_刘点石](http://weibo.com/u/6000289349?refer_flag=1001030201_)
+QQ : 1833727822
 
 
 
