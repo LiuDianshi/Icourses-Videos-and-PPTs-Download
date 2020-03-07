@@ -20,26 +20,34 @@
 
 ### 更新日志：
 
-V1.3.9.1(2019.4.9 对应release为v1.2.2)
+V1.3.9.2( 2020.3.7 对应release为v1.2.3)
+
+好久不见！
+修复 近期（由于爱课程网页版前端更新所造成的）无法使用的问题以及一些其他的小问题
+
+[点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases/tag/v1.2.3)下载
+
+
+V1.3.9.1( 2019.4.9 对应release为v1.2.2)
 
 修复 在Windows下使用时会出现的改名乱码问题
 
 [点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases/tag/v1.2.2)下载
 
-V1.3.9(2019.2.18 对应release为v1.2.1)
+V1.3.9( 2019.2.18 对应release为v1.2.1)
 
 新增检查更新功能，优化了PPT模式解析时文件的命名方式及极个别情况下资源不完整的问题
 
 [点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases/tag/v1.2.1)下载
 
-V1.3.8(2019.2.12 对应release为v1.2.0)
+V1.3.8( 2019.2.12 对应release为v1.2.0)
 
 修复了若干bug，优化了文件改名的逻辑
 
 [点我](https://github.com/LiuDianshi/Icourses-Videos-and-PPTs-Download/releases/tag/v1.2.0)下载
 
 
-V1.3.7(2019.1.22 对应release为v1.1.0)
+V1.3.7( 2019.1.22 对应release为v1.1.0)
 
 终于写好了图形界面了，再也不用对着丑陋的命令行操作了！
 
